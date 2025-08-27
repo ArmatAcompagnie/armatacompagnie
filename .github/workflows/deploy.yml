@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}   # (optionnel) permet de lancer manuellement depuis l'onglet Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          # 1) Récupère le code
+      - uses: actions/setup-node@v4        # 2) Installe Node
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci                        # 3) Installe les dépendances (depuis package-lock)
+      - run: npm run build                 # 4) Build Vite -> crée dist/
+      - uses: actions/upload-pages-artifact@v3  # 5) Emballe dist/ en "artifact"
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages                   # crée/alimente l’environnement Pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4      # 6) Publie l’artifact sur GitHub Pages
