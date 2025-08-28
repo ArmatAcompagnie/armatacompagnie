@@ -1,30 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { Container, Form, FormGroup, Label, Input, Button, Spinner } from 'reactstrap'
 
 export default function Contact() {
   const [submitting, setSubmitting] = useState(false)
-
-  // Empêche l'envoi si le captcha n'est pas coché
-  useEffect(() => {
-    const form = document.getElementById('contact-form') as HTMLFormElement | null
-    if (!form) return
-    const handler = (e: Event) => {
-      const ta = form.querySelector('textarea[name="h-captcha-response"]') as HTMLTextAreaElement | null
-      if (!ta || !ta.value) {
-        e.preventDefault()
-        alert('Merci de cocher le captcha.')
-      }
-    }
-    form.addEventListener('submit', handler)
-    return () => form.removeEventListener('submit', handler)
-  }, [])
+  const [captchaToken, setCaptchaToken] = useState('')
 
   return (
     <Container style={{ paddingTop: '6rem', maxWidth: 720 }}>
       <h2 className="mb-3">Contact & Devis</h2>
 
       <Form
-        id="contact-form"
         action="https://api.web3forms.com/submit"
         method="POST"
         onSubmit={() => setSubmitting(true)}
@@ -32,8 +18,10 @@ export default function Contact() {
         {/* requis par Web3Forms */}
         <input type="hidden" name="access_key" value="911f2f23-0874-413e-b303-a74dbb1404b0" />
         <input type="hidden" name="subject" value="Nouveau message depuis le site Armata Compagnie" />
-        {/* IMPORTANT: HashRouter => redirige vers #/merci */}
-        <input type="hidden" name="redirect" value="https://armataccompagnie.github.io/armatacompagnie/?w3f=ok" />
+        {/* redirection = page réelle (voir correctif 2) */}
+        <input type="hidden" name="redirect" value="https://armataccompagnie.github.io/armatacompagnie/merci/" />
+        {/* IMPORTANT: transmettre le jeton hCaptcha à Web3Forms */}
+        <input type="hidden" name="h-captcha-response" value={captchaToken} />
 
         <FormGroup>
           <Label htmlFor="name">Nom</Label>
@@ -50,9 +38,14 @@ export default function Contact() {
           <Input id="message" name="message" type="textarea" rows={5} required />
         </FormGroup>
 
-        {/* hCaptcha */}
+        {/* hCaptcha (sitekey fourni par Web3Forms en free) */}
         <div className="mb-3">
-          <div className="h-captcha" data-captcha="true"></div>
+          <HCaptcha
+            sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+            reCaptchaCompat={false}
+            onVerify={(token) => setCaptchaToken(token)}
+            onExpire={() => setCaptchaToken('')}
+          />
         </div>
 
         {/* RGPD */}
@@ -63,7 +56,7 @@ export default function Contact() {
           </Label>
         </FormGroup>
 
-        <Button color="primary" type="submit" disabled={submitting}>
+        <Button color="primary" type="submit" disabled={submitting || !captchaToken}>
           {submitting ? <><Spinner size="sm" /> Envoi…</> : 'Envoyer'}
         </Button>
       </Form>
