@@ -15,13 +15,9 @@ export default function Contact() {
         method="POST"
         onSubmit={() => setSubmitting(true)}
       >
-        {/* requis par Web3Forms */}
         <input type="hidden" name="access_key" value="911f2f23-0874-413e-b303-a74dbb1404b0" />
         <input type="hidden" name="subject" value="Nouveau message depuis le site Armata Compagnie" />
-        {/* redirection = page réelle (voir correctif 2) */}
         <input type="hidden" name="redirect" value="https://armataccompagnie.github.io/armatacompagnie/merci/" />
-        {/* IMPORTANT: transmettre le jeton hCaptcha à Web3Forms */}
-        <input type="hidden" name="h-captcha-response" value={captchaToken} />
 
         <FormGroup>
           <Label htmlFor="name">Nom</Label>
@@ -38,7 +34,6 @@ export default function Contact() {
           <Input id="message" name="message" type="textarea" rows={5} required />
         </FormGroup>
 
-        {/* hCaptcha (sitekey fourni par Web3Forms en free) */}
         <div className="mb-3">
           <HCaptcha
             sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
@@ -48,12 +43,9 @@ export default function Contact() {
           />
         </div>
 
-        {/* RGPD */}
         <FormGroup check className="mb-3">
           <Input type="checkbox" id="rgpd" required />
-          <Label check htmlFor="rgpd">
-            J’accepte que mes informations soient utilisées pour être recontacté·e par l’association.
-          </Label>
+          <Label check htmlFor="rgpd">J’accepte que mes informations soient utilisées pour être recontacté·e par l’association.</Label>
         </FormGroup>
 
         <Button color="primary" type="submit" disabled={submitting || !captchaToken}>
