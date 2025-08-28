@@ -6,6 +6,10 @@ import Planning from './pages/Planning'
 import Equipe from './pages/Equipe'
 import Galerie from './pages/Galerie'
 import Contact from './pages/Contact'
+import Merci from './pages/Merci'
+
+
+
 
 export default function App() {
   return (
@@ -18,6 +22,7 @@ export default function App() {
           <Route path="/equipe" element={<Equipe />} />
           <Route path="/galerie" element={<Galerie />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/merci" element={<Merci />} />
         </Routes>
       </main>
       <Footer />
