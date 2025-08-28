@@ -7,13 +7,14 @@ import Equipe from './pages/Equipe'
 import Galerie from './pages/Galerie'
 import Contact from './pages/Contact'
 import Merci from './pages/Merci'
-
+import AfterSubmit from './components/AfterSubmit';
 
 
 
 export default function App() {
   return (
     <Router>
+      <AfterSubmit />
       <TopNav />
       <main className="pb-5">
         <Routes>
