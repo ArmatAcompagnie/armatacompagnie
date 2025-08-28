@@ -17,7 +17,7 @@ export default function Contact() {
       >
         <input type="hidden" name="access_key" value="911f2f23-0874-413e-b303-a74dbb1404b0" />
         <input type="hidden" name="subject" value="Nouveau message depuis le site Armata Compagnie" />
-        <input type="hidden" name="redirect" value="https://armataccompagnie.github.io/armatacompagnie/merci/" />
+        <input type="hidden" name="redirect" value="https://armataccompagnie.github.io/armatacompagnie/merci.html" />
 
         <FormGroup>
           <Label htmlFor="name">Nom</Label>
