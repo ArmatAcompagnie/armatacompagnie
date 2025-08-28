@@ -18,7 +18,7 @@ export default function Contact() {
     const form = e.currentTarget
     const data = new FormData(form)
     // champs requis par Web3Forms
-    data.append('access_key', 'YOUR_ACCESS_KEY') // <-- remplace par ta clé
+    data.append('access_key', '911f2f23-0874-413e-b303-a74dbb1404b0') // <-- remplace par ta clé
     data.append('subject', 'Nouveau message depuis le site Armata Compagnie')
     data.append('h-captcha-response', captchaToken)
 
