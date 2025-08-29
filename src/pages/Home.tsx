@@ -1,9 +1,13 @@
 import { Container, Row, Col, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
+import Meta from '../components/Meta'
+import { site } from '../site.config'
+
 export default function Home() {
   return (
     <Container style={{ paddingTop: '5rem' }}>
+      <Meta title="Accueil" description={site.description} path="" />
       <Row className="align-items-center gy-4">
         <Col md="6">
           <h1 className="display-5 fw-bold">Combat & Cascade chorégraphiés</h1>

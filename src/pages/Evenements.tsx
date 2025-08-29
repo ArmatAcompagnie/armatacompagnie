@@ -6,7 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import frLocale from '@fullcalendar/core/locales/fr'
 import { events as allEvents, type Category } from '../data/events'
-
+import Meta from '../components/Meta'
 
 
 export default function Evenements() {
@@ -28,6 +28,11 @@ export default function Evenements() {
 
   return (
     <Container style={{ paddingTop: '6rem' }}>
+      <Meta
+        title="Événements & prestations"
+        description="Nos dates de spectacles, campements historiques et démonstrations."
+        path="evenements"
+      />
       <h2 className="mb-3">Événements & prestations</h2>
 
       <FormGroup className="mb-3" style={{ maxWidth: 360 }}>
