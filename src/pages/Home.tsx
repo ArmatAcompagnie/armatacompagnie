@@ -15,7 +15,7 @@ export default function Home() {
             Spectacles et vie de camp historique avec du combat et de la cascade chorégraphié.
           </p>
           <div className="d-flex gap-2">
-            <Button color="primary" tag={Link} to="/evenements">Evènements à venir</Button>
+            <Button color="primary" tag={Link} to="/evenements">Evénements à venir</Button>
             <Button color="secondary" outline tag={Link} to="/galerie">Voir la galerie</Button>
           </div>
         </Col>
