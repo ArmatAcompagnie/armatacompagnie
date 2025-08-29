@@ -2,12 +2,10 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import TopNav from './components/TopNav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import Planning from './pages/Planning'
+import Evenements from './pages/Evenements'
 import Equipe from './pages/Equipe'
 import Galerie from './pages/Galerie'
 import Contact from './pages/Contact'
-
-
 
 
 
@@ -19,7 +17,7 @@ export default function App() {
       <main className="pb-5">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/planning" element={<Planning />} />
+          <Route path="/evenements" element={<Evenements />} />
           <Route path="/equipe" element={<Equipe />} />
           <Route path="/galerie" element={<Galerie />} />
           <Route path="/contact" element={<Contact />} />

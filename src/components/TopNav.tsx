@@ -14,7 +14,7 @@ export default function TopNav() {
         <Collapse isOpen={open} navbar>
           <Nav navbar className="ms-auto">
             <NavItem><NavLink tag={Link} to="/">Accueil</NavLink></NavItem>
-            <NavItem><NavLink tag={Link} to="/planning">Planning</NavLink></NavItem>
+            <NavItem><NavLink tag={Link} to="/evenements">Événements</NavLink></NavItem>
             <NavItem><NavLink tag={Link} to="/equipe">Équipe</NavLink></NavItem>
             <NavItem><NavLink tag={Link} to="/galerie">Galerie</NavLink></NavItem>
             <NavItem><NavLink tag={Link} to="/contact">Contact</NavLink></NavItem>
