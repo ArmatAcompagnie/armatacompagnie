@@ -5,7 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import frLocale from '@fullcalendar/core/locales/fr'
-import { events as allEvents, type EventItem, type Category } from '../data/events'
+import { events as allEvents, type Category } from '../data/events'
 
 // CSS FullCalendar (si erreur de chemin, remplace "index.css" par "main.css")
 import '@fullcalendar/daygrid/index.css'
