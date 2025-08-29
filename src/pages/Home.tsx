@@ -8,10 +8,10 @@ export default function Home() {
         <Col md="6">
           <h1 className="display-5 fw-bold">Combat & Cascade chorégraphiés</h1>
           <p className="lead">
-            Entraînements, spectacles et stages pour apprendre l’art du mouvement sécurisé et spectaculaire.
+            Spectacles et vie de camp historique avec du combat et de la cascade chorégraphié.
           </p>
           <div className="d-flex gap-2">
-            <Button color="primary" tag={Link} to="/planning">Voir le planning</Button>
+            <Button color="primary" tag={Link} to="/evenements">Evènements à venir</Button>
             <Button color="secondary" outline tag={Link} to="/galerie">Voir la galerie</Button>
           </div>
         </Col>
