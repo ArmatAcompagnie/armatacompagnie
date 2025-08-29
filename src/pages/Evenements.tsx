@@ -7,9 +7,7 @@ import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import frLocale from '@fullcalendar/core/locales/fr'
 import { events as allEvents, type Category } from '../data/events'
 
-// CSS FullCalendar (si erreur de chemin, remplace "index.css" par "main.css")
-import '@fullcalendar/daygrid/index.css'
-import '@fullcalendar/bootstrap5/index.css'
+
 
 export default function Evenements() {
   const [filter, setFilter] = useState<Category | 'Toutes'>('Toutes')
