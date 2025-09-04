@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Container,
-} from 'reactstrap'
+import {Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Container } from 'reactstrap'
+
+
 
 export default function TopNav() {
   const [open, setOpen] = useState(false)
@@ -18,6 +18,7 @@ export default function TopNav() {
             <NavItem><NavLink tag={Link} to="/equipe">Équipe</NavLink></NavItem>
             <NavItem><NavLink tag={Link} to="/galerie">Galerie</NavLink></NavItem>
             <NavItem><NavLink tag={Link} to="/contact">Contact</NavLink></NavItem>
+            <NavItem><NavLink tag={Link} to="/mentions-legales">Mentions légales</NavLink></NavItem>
           </Nav>
         </Collapse>
       </Container>

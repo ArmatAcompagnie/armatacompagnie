@@ -1,5 +1,5 @@
 export const site = {
-  name: 'ArmatA Compagnie',
+  name: 'Compagnie ArmatA',
   url: 'https://armataccompagnie.github.io/armatacompagnie/',
   description: 'Combat & cascade chorégraphiés pour événements, fêtes historiques et spectacles.',
   tagline: 'Combat & cascade chorégraphiés',
@@ -8,5 +8,8 @@ export const site = {
   instagram: 'https://www.instagram.com/armata_cie',
   logo: 'images/logo.png', // place un logo dans public/images/
   ogImage: 'images/og.jpg', // 1200x630 recommandé (public/images/og.jpg)
-  address: '4 Rue Raymond Poirier 28600 Luisant',
+  address: 'chez Mr Jumeau Romain, App 2 Batiment B, 84 rue de la Vallee de l Eure, 28600 Luisant',
+  trainingAddress: 'Complexe sportif Marcel Roblot, 4 Rue Raymond Poirier 28600 Luisant',
+  rna: 'W281009801',
+  siren: '903043727'
 }

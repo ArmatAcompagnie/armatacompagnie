@@ -6,6 +6,7 @@ import Evenements from './pages/Evenements'
 import Equipe from './pages/Equipe'
 import Galerie from './pages/Galerie'
 import Contact from './pages/Contact'
+import Mentions from './pages/Mentions'
 
 
 
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/equipe" element={<Equipe />} />
           <Route path="/galerie" element={<Galerie />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/mentions-legales" element={<Mentions />} />
           
         </Routes>
       </main>
