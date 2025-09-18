@@ -1,0 +1,26 @@
+.nav-lien {
+    color:white;
+    padding: 0.5em;
+    text-transform: uppercase;
+}
+
+.nav-lien:hover {
+    text-decoration: underline white !important;
+}
+
+.footer-lien {
+    text-decoration: none;
+}
+
+.footer-lien:hover {
+    font-weight: bold;
+}
+
+.social {    
+    fill: #495057;
+}
+
+.social:hover {
+    fill: white;
+    filter: brightness(1.75);
+}
