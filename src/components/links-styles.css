@@ -24,3 +24,20 @@
     fill: white;
     filter: brightness(1.75);
 }
+
+/* Cible les liens d'icônes pour les centrer parfaitement */
+.social-icon {
+  width: 36px;
+  height: 36px;
+  line-height: 0;              /* supprime la ligne de base qui décale verticalement */
+  border-radius: 6px;          /* clic area agréable */
+}
+
+.social-icon svg {
+  display: block;              /* évite le petit décalage baseline */
+}
+
+/* (Optionnel) état hover discret */
+.social-icon:hover {
+  background-color: rgba(255,255,255,0.08);
+}
