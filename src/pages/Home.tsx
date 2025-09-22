@@ -3,6 +3,8 @@ import { Container, Row, Col, Card, CardBody, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { events as allEvents } from '../data/events'
 import DemoPromo from '../components/DemoPromo'
+import '../styles/home.css'
+
 
 // petit helper pour que les images marchent en local ET sur GitHub Pages
 const base = (p: string) => `${import.meta.env.BASE_URL}${p}`.replace('//','/')
@@ -27,15 +29,18 @@ export default function Home() {
     <>
       {/* HERO simple (image de fond + overlay) */}
       <section
-        className="py-5"
+        className="py-5 hero"
         style={{
           position: 'relative',
-          minHeight: '70vh',
+          //minHeight: '70vh',                 // ajuste si tu veux : 50–65vh marche bien
           display: 'grid',
           alignItems: 'center',
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.55)), url('${base('images/img-002.jpg')}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          // 1er calque = gradient (cover), 2e calque = image (contain)
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.6)), url('${base('images/img-002.jpg')}')`,
+          backgroundSize: 'cover, cover',
+          backgroundPosition: 'center, center',
+          backgroundRepeat: 'no-repeat, no-repeat',
+          backgroundColor: '#000',           // couleur des bandes (letterboxing)
         }}
       >
         <Container style={{ color: '#fff' }}>
@@ -44,9 +49,35 @@ export default function Home() {
             Spectacles & camps historiques, démonstrations de combat chorégraphiés — de l’Antiquité au
             fantastique.
           </p>
-          <Button color="primary" tag={Link} to="/contact">Demander un devis</Button>
+          <Button color="primary" tag={Link} to="/contact">Demandez-nous</Button>
         </Container>
       </section>
+
+      <section
+        className="py-5 "
+        style={{
+          position: 'relative',
+          minHeight: '70vh',
+          display: 'grid',
+          alignItems: 'start',
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.55)), url('${base('images/img-001.jpg')}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <Container style={{ color: '#fff' }}>
+          <h2 className="display-5 fw-bold mb-2">La Compagnie Armata...</h2>
+          <p className="lead mb-3" style={{ maxWidth: 720 }}>
+            ...se spécialise dans la création de combats chorégraphiés, permettant de plonger les petits et grands dans différentes époques.
+            <br /> <br />
+            Les univers historiques, fantastiques, littéraires, théâtral et tant d’autres sont nos sources d’inspiration de nos créations, que nous mettons en scène tout en magnifiant l’arme blanche.
+            <br /><br />
+            Des Château aux fêtes de villages, des scènes de théâtres aux guinguettes, nos terrains de jeux sont divers et variés……
+          </p>
+          
+        </Container>
+      </section>
+      
 
       {/* UNIVERS / PRESTATIONS (exemples) */}
       <section className="py-5">
