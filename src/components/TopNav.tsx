@@ -49,6 +49,8 @@ function IconFacebookSquare(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+
+
 /** Instagram avec dégradé officiel (gradient interne au SVG) */
 function IconInstagram(props: React.SVGProps<SVGSVGElement>) {
   const id = 'igGradient'
@@ -82,7 +84,15 @@ function IconInstagram(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-
+/** YouTube – carré rouge + play blanc */
+function IconYouTubeSquare(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden focusable="false" {...props}>
+      <rect x="2" y="2" width="20" height="20" rx="4" fill="#FF0000" />
+      <polygon points="10,8 16,12 10,16" fill="#fff" />
+    </svg>
+  )
+}
 
 const TopNav = () => {
   return (
@@ -154,6 +164,16 @@ const TopNav = () => {
                 title="Instagram"
               >
                 <IconInstagram />
+              </a>
+            )}
+            {site.youtube && (
+              <a
+                href={site.youtube}
+                className="nav-link p-0 d-inline-flex align-items-center justify-content-center social-icon"
+                target="_blank" rel="noopener noreferrer"
+                aria-label="YouTube - ouvre dans un nouvel onglet" title="YouTube"
+              >
+                <IconYouTubeSquare />
               </a>
             )}
           </div>
