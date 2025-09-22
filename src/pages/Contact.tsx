@@ -57,8 +57,43 @@ export default function Contact() {
       ) : (
         <Form onSubmit={onSubmit}>
           <FormGroup><Label htmlFor="name">Nom</Label><Input id="name" name="name" required /></FormGroup>
-          <FormGroup><Label htmlFor="email">Email</Label><Input id="email" name="email" type="email" required /></FormGroup>
-          <FormGroup><Label htmlFor="message">Votre demande</Label><Input id="message" name="message" type="textarea" rows={5} required /></FormGroup>
+          <FormGroup>
+            <Label htmlFor="email">E-mail</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="votre@email.fr"
+              autoComplete="email"
+            />
+          </FormGroup>
+
+          {/* ➜ NOUVEAU : Sujet (entre Email et Message) */}
+          <FormGroup>
+            <Label htmlFor="subject">Sujet</Label>
+            <Input
+              id="subject"
+              name="subject"            // <-- important pour Web3Forms
+              type="text"
+              required
+              maxLength={120}
+              placeholder="Sujet de votre message"
+            />
+          </FormGroup>
+
+          {/* Message */}
+          <FormGroup>
+            <Label htmlFor="message">Votre demande</Label>
+            <Input
+              id="message"
+              name="message"
+              type="textarea"
+              rows={6}
+              required
+              placeholder="Décrivez votre demande…"
+            />
+          </FormGroup>
 
           <div className="mb-3">
             <HCaptcha
