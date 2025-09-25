@@ -54,10 +54,10 @@ export default function Home() {
       </section>
 
       <section
-        className="py-5 "
+        className="py-5 hero"
         style={{
           position: 'relative',
-          minHeight: '70vh',
+          //minHeight: '80vh',
           display: 'grid',
           alignItems: 'start',
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.55)), url('${base('images/img-001.jpg')}')`,
@@ -85,7 +85,7 @@ export default function Home() {
           <h2 className="h2 fw-bold mb-3"><strong>Nos univers</strong></h2>
           <Row className="g-3">
             {[
-              { k:'medievale', t:'Médiévale', img:'images/Med001.JPG' },
+              { k:'medievale', t:'Médiéval', img:'images/Med001.JPG' },
               { k:'grand', t:'Renaissance-Grand Siècle', img:'images/img-GS002.JPG' },
               { k:'starwars', t:'Fantastique', img:'images/IMG-SW01.jpg' }
             ].map(item => (
@@ -112,7 +112,7 @@ export default function Home() {
 
       {/* DEMO / PROMO (YouTube au clic) */}
       <DemoPromo
-        videoId="UzEqV2KXOR4"               // ← remplace par l’ID de votre vidéo promo
+        videoId="ay_pphQG2fU"               // ← remplace par l’ID de votre vidéo promo
         title="Démo / Bande promo"
         poster="images/logo/logo-master.png"// ← image locale pour éviter tout appel à YouTube avant clic
         subtitle="Extraits de spectacles : antique, médiéval, grand siècle, renaissance et fantastique."

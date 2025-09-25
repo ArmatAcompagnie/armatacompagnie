@@ -1,5 +1,5 @@
 export const site = {
-  name: 'Compagnie ArmatA',
+  name: 'Compagnie Armata',
   url: 'https://armataccompagnie.github.io/armatacompagnie/',
   description: 'Combat & cascade chorégraphiés pour événements, fêtes historiques et spectacles.',
   tagline: 'Combat & cascade chorégraphiés',
