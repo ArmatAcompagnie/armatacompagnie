@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, Badge, Modal, ModalBody } from 'reactstrap
 import { gallery as allPhotos, TAGS } from '../data/gallery'
 import VideoSection from '../components/VideoSection'
 import '../styles/gallery.css'
+import Meta from '../components/Meta'
 
 
 const base = (p: string) => `${import.meta.env.BASE_URL}${p}`.replace('//','/')
@@ -35,6 +36,11 @@ export default function Galerie() {
 
   return (
     <>
+    <Meta
+      title="Galerie photos & vidéos"
+      description="Photos et vidéos de nos prestations : antique, médiévale, grand siècle, renaissance et fantastique."
+      path="galerie"
+    />
       <section className="py-4">
         <Container>
           <div className="d-flex flex-wrap gap-2 align-items-center mb-3">
