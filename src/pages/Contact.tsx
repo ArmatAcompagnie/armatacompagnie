@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { Container, Form, FormGroup, Label, Input, Button, Alert, Spinner } from 'reactstrap'
+import Meta from '../components/Meta'
 
 const ACCESS_KEY = '911f2f23-0874-413e-b303-a74dbb1404b0'; // IMPORTANT: ta access_key Web3Forms (format UUID v4)
 const isUUID = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/; // IMPORTANT: validation
@@ -50,6 +51,11 @@ export default function Contact() {
 
   return (
     <Container style={{ paddingTop: '6rem', maxWidth: 720 }}>
+          <Meta
+            title="Contact"
+            description="Utilisez notre formulaire de contact."
+            path="contact"
+          />
       <h2 className="mb-3">Contact & Devis</h2>
 
       {succeeded ? (

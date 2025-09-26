@@ -1,10 +1,17 @@
 import { Container, Row, Col, Card, CardBody } from 'reactstrap'
 import { team } from '../data/team'
+import Meta from '../components/Meta'
+
 const asset = (p: string) => `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`
 
 export default function Equipe() {
   return (
     <Container style={{ paddingTop: '6rem' }}>
+          <Meta
+            title="équipe"
+            description="Présentation de notre équipe."
+            path="equipe"
+          />
       <h2 className="mb-4">L’équipe</h2>
       <Row className="g-3">
         {team.map((m, i) => (

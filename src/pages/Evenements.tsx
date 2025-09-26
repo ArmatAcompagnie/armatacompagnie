@@ -33,7 +33,7 @@ export default function Evenements() {
         description="Nos dates de spectacles, campements historiques et démonstrations."
         path="evenements"
       />
-      <h2 className="mb-3">Événements & prestations</h2>
+      <h1 className="mb-3">Événements & prestations</h1>
 
       <FormGroup className="mb-3" style={{ maxWidth: 360 }}>
         <Label htmlFor="cat">Filtrer par période/genre</Label>

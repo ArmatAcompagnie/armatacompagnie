@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { events as allEvents } from '../data/events'
 import DemoPromo from '../components/DemoPromo'
 import '../styles/home.css'
+import Meta from '../components/Meta'
 
 
 // petit helper pour que les images marchent en local ET sur GitHub Pages
@@ -27,6 +28,11 @@ export default function Home() {
 
   return (
     <>
+      <Meta
+         title="Accueil"
+         description="Combat & cascade chorégraphiés — spectacles et campements historiques, combats scénarisés et artistique."
+         path="/"
+      />
       {/* HERO simple (image de fond + overlay) */}
       <section
         className="py-5 hero"

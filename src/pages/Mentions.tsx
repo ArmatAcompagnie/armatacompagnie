@@ -1,10 +1,16 @@
 import { Container } from 'reactstrap'
 import { site } from '../site.config'
 import MapPreview from '../components/MapPreview'
+import Meta from '../components/Meta'
 
 export default function Mentions() {
   return (
     <Container style={{ paddingTop: '6rem', maxWidth: 900 }}>
+    <Meta
+        title="Mentions légales"
+        description="Mentions légales."
+        path="mentions-legales"
+    />
       <h1 className="mb-4">Mentions légales</h1>
 
       <section className="mb-4">
