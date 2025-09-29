@@ -28,8 +28,17 @@ export default function Contact() {
     const data = new FormData(form)
 
     data.append('access_key', ACCESS_KEY) // IMPORTANT: on l’ajoute une seule fois ici
-    data.append('subject', 'Nouveau message depuis le site Armata Compagnie')
     data.append('h-captcha-response', captchaToken)
+    //fallback de sujet seulement si vide
+    const userSubject = String(data.get('subject') ?? '').trim()
+    if (!userSubject) {
+      data.set('subject', 'Nouveau message — Compagnie ArmatA')
+    }
+    // CHANGEMENT : entêtes mail plus propres (optionnel mais recommandé)
+    const name = String(data.get('name') ?? '').trim()
+    const email = String(data.get('email') ?? '').trim()
+    if (name)  data.set('from_name', name)
+    if (email) data.set('replyto', email)
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })

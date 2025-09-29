@@ -7,13 +7,13 @@ import Equipe from './pages/Equipe'
 import Galerie from './pages/Galerie'
 import Contact from './pages/Contact'
 import Mentions from './pages/Mentions'
-
+import ScrollToTop from './components/ScrollToTop'
 
 
 export default function App() {
   return (
     <Router>
-      
+      <ScrollToTop />
       <TopNav />
       <main className="pb-5">
         <Routes>
