@@ -1,0 +1,5 @@
+.team-photo {
+  aspect-ratio: 3 / 4;   /* cadre uniforme */
+  object-fit: cover;     /* recadre proprement */
+  display: block;
+}
