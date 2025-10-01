@@ -87,41 +87,100 @@ export default function VideoSection() {
       </Container>
 
       {/* Lightbox vidéo */}
-      <Modal isOpen={open} toggle={close} size="xl" centered>
-        <ModalBody className="p-0" style={{ background: '#000' }}>
-          {open && vids[idx] && (
-            <div className="position-relative">
-              <div className="ratio ratio-16x9">
-                <iframe
-                  title={vids[idx].title}
-                  src={`https://www.youtube-nocookie.com/embed/${vids[idx].id}?autoplay=1&rel=0&modestbranding=1`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  loading="lazy"
-                  style={{ border: 0, width: '100%', height: '100%' }}
-                />
+<Modal isOpen={open} toggle={close} size="xl" centered>
+  <ModalBody className="p-2" style={{ background: '#000' }}>
+    {open && vids[idx] && (
+      <div className="position-relative">
+
+        {/* Ligne principale : flèches (≥ sm) + vidéo au centre */}
+        <div className="d-none d-sm-flex align-items-center justify-content-center">
+          <button
+            type="button"
+            className="btn btn-light me-3"
+            onClick={prev}
+            aria-label="Précédent"
+          >
+            ‹
+          </button>
+
+          <div className="ratio ratio-16x9" style={{ width: 'min(100%, 1100px)' }}>
+            <iframe
+              title={vids[idx].title}
+              src={`https://www.youtube-nocookie.com/embed/${vids[idx].id}?autoplay=1&rel=0&modestbranding=1`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+              allowFullScreen
+              // @ts-expect-error (attributs vendor utiles iOS)
+              webkitAllowFullScreen
+              
+              mozallowfullscreen="true"
+              playsInline
+              loading="lazy"
+              style={{ border: 0, width: '100%', height: '100%' }}
+            />
+          </div>
+
+          <button
+            type="button"
+            className="btn btn-light ms-3"
+            onClick={next}
+            aria-label="Suivant"
+          >
+            ›
+          </button>
+        </div>
+
+        {/* Mobile : vidéo seule, puis grosses actions en dessous */}
+        <div className="d-sm-none">
+          <div className="ratio ratio-16x9">
+            <iframe
+              title={vids[idx].title}
+              src={`https://www.youtube-nocookie.com/embed/${vids[idx].id}?autoplay=1&rel=0&modestbranding=1`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+              allowFullScreen
+              // @ts-expect-error
+              webkitAllowFullScreen
+              
+              mozallowfullscreen="true"
+              playsInline
+              loading="lazy"
+              style={{ border: 0, width: '100%', height: '100%' }}
+            />
+          </div>
+
+          <div className="d-flex gap-2 mt-2">
+            <button type="button" className="btn btn-light flex-fill" onClick={prev} aria-label="Précédent">‹ Précédent</button>
+            <button type="button" className="btn btn-light flex-fill" onClick={next} aria-label="Suivant">Suivant ›</button>
+          </div>
+        </div>
+
+        {/* Caption (sous la vidéo) */}
+        {(vids[idx].caption || vids[idx].tags?.length) && (
+          <div className="p-2 text-white-50 small">
+            {vids[idx].caption && <div>{vids[idx].caption}</div>}
+            {vids[idx].tags?.length > 0 && (
+              <div className="mt-1">
+                {vids[idx].tags.map(t => (
+                  <Badge key={t} color="secondary" className="me-1">{t}</Badge>
+                ))}
               </div>
+            )}
+          </div>
+        )}
 
-              {(vids[idx].caption || vids[idx].tags?.length) && (
-                <div className="p-2 text-white-50 small">
-                  {vids[idx].caption && <div>{vids[idx].caption}</div>}
-                  {vids[idx].tags?.length > 0 && (
-                    <div className="mt-1">
-                      {vids[idx].tags.map(t => (
-                        <Badge key={t} color="secondary" className="me-1">{t}</Badge>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+        {/* Fermer (reste en overlay, coin haut droit) */}
+        <button
+          type="button"
+          className="btn btn-outline-light position-absolute top-0 end-0 m-2"
+          onClick={close}
+          aria-label="Fermer"
+        >
+          ✕
+        </button>
+      </div>
+    )}
+  </ModalBody>
+</Modal>
 
-              <button type="button" className="btn btn-light position-absolute top-50 start-0 translate-middle-y ms-2" onClick={prev} aria-label="Précédent">‹</button>
-              <button type="button" className="btn btn-light position-absolute top-50 end-0 translate-middle-y me-2" onClick={next} aria-label="Suivant">›</button>
-              <button type="button" className="btn btn-outline-light position-absolute top-0 end-0 m-2" onClick={close} aria-label="Fermer">✕</button>
-            </div>
-          )}
-        </ModalBody>
-      </Modal>
     </section>
   )
 }
