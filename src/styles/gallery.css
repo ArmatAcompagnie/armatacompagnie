@@ -1,3 +1,132 @@
-/* src/styles/gallery.css */
-figure[role="button"] img { transition: transform .25s ease; }
-figure[role="button"]:hover img { transform: scale(1.03); }
+/* --- Hover vignettes --- */
+@media (hover: hover) and (pointer: fine) {
+  figure[role="button"] img { transition: transform .25s ease, opacity .25s ease; }
+  figure[role="button"]:hover img { transform: scale(1.03); opacity: .95; }
+}
+
+/* --- Bloque le scroll de fond quand une modale est ouverte --- */
+html.modal-open,
+body.modal-open,
+.modal-open #root,
+.modal-open .App {
+  overflow: hidden !important;
+  height: 100%;
+}
+
+/* --- Modale centrée --- */
+.gal-modal { padding-right: 0 !important; }           /* évite le décalage à droite */
+.gal-dialog {
+  margin: 0;
+  display: flex;
+  align-items: center;         /* centre vertical */
+  justify-content: center;     /* centre horizontal */
+  transform: none !important;
+}
+
+/* --- Contenu sans scroll interne --- */
+.gal-content { background: transparent; border: 0; overflow: visible; }
+
+/* --- Boîte fixe bornée au viewport (indépendante de la photo) --- */
+.gal-box {
+  background: #000;
+  border-radius: .25rem;
+  width: min(1200px, 92vw);
+  height: min(820px, 92svh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Image toujours entière et contenue */
+.gal-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Légende overlay (n’ajoute pas de hauteur) */
+.gal-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: .5rem .75rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 100%);
+  pointer-events: none;
+}
+
+/* Mobile : boîte un peu plus compacte si besoin */
+@media (max-width: 575.98px) {
+  .gal-box {
+    width: min(100vw, 92vw);
+    height: min(680px, 92svh);
+  }
+}
+/* Centre le contenu dans la modale */
+.gal-content {
+  display: flex;
+  align-items: center;      /* centrage vertical */
+  justify-content: center;  /* centrage horizontal */
+}
+
+/* S’assure que la boîte est centrée même si le parent n’est pas en flex */
+.gal-box {
+  margin: 0 auto;           /* ⬅️ force le centrage horizontal */
+}
+/* Flèches fines — fade in/out, grandes zones de clic */
+.gal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: #fff;
+  padding: .75rem 1rem;      /* zone de clic confortable */
+  border-radius: .5rem;
+  opacity: .18;              /* quasi invisible par défaut */
+  transition: opacity .2s ease, background-color .2s ease, transform .15s ease;
+  z-index: 3;
+}
+
+.gal-prev { left: .25rem; }
+.gal-next { right: .25rem; }
+
+.gal-nav svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* Au survol de la boîte, on révèle les flèches */
+@media (hover: hover) and (pointer: fine) {
+  .gal-box:hover .gal-nav { opacity: .85; }
+  .gal-nav:hover,
+  .gal-nav:focus-visible {
+    opacity: 1;
+    background: rgba(255,255,255,.08);
+    outline: none;
+  }
+}
+
+/* Sur mobile (pas de hover), on les garde visibles mais douces */
+@media (hover: none) {
+  .gal-nav { opacity: .6; }
+  .gal-nav:active { opacity: 1; }
+}
+
+/* Légère protection visuelle si l'image est très blanche */
+.gal-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(0,0,0,.15) 0%, transparent 15%,
+    transparent 85%, rgba(0,0,0,.15) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Petit feedback au clic */
+.gal-nav:active { transform: translateY(-50%) scale(0.98); }
