@@ -42,7 +42,7 @@ export default function Home() {
           display: 'grid',
           alignItems: 'center',
           // 1er calque = gradient (cover), 2e calque = image (contain)
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.6)), url('${base('images/img-002.jpg')}')`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.6)), url('${base('images/IMG-test1600.jpg')}')`,
           backgroundSize: 'cover, cover',
           backgroundPosition: 'center, center',
           backgroundRepeat: 'no-repeat, no-repeat',

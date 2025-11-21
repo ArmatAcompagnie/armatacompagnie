@@ -92,19 +92,28 @@ export default function Galerie() {
       <VideoSection />
 
       {/* Lightbox (Modal) */}
-      <Modal isOpen={open} toggle={close} size="xl" centered>
-        <ModalBody className="p-0" style={{ background: '#000' }}>
+      <Modal
+        isOpen={open}
+        toggle={close}
+        centered
+        container="body"
+        modalClassName="gal-modal"
+        dialogClassName="gal-dialog"
+        contentClassName="gal-content"
+      >
+        <ModalBody className="p-0">
           {open && photos[idx] && (
-            <div className="position-relative">
+            <div className="gal-box position-relative">
               <img
                 src={base(photos[idx].srcLarge || photos[idx].src)}
                 alt={photos[idx].alt}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                className="gal-img"
+                loading="lazy"
+                decoding="async"
               />
 
-              {/* Caption + tags */}
               {(photos[idx].caption || photos[idx].tags?.length) && (
-                <div className="p-2 text-white-50 small">
+                <div className="gal-caption text-white-50 small">
                   {photos[idx].caption && <div>{photos[idx].caption}</div>}
                   {photos[idx].tags?.length > 0 && (
                     <div className="mt-1">
@@ -116,35 +125,18 @@ export default function Galerie() {
                 </div>
               )}
 
-              {/* Controls */}
-              <button
-                type="button"
-                className="btn btn-light position-absolute top-50 start-0 translate-middle-y ms-2"
-                onClick={prev}
-                aria-label="Précédent"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                className="btn btn-light position-absolute top-50 end-0 translate-middle-y me-2"
-                onClick={next}
-                aria-label="Suivant"
-              >
-                ›
-              </button>
-              <button
-                type="button"
-                className="btn btn-outline-light position-absolute top-0 end-0 m-2"
-                onClick={close}
-                aria-label="Fermer"
-              >
-                ✕
-              </button>
+              <button type="button" className="gal-nav gal-prev" onClick={prev} aria-label="Précédent"><svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg></button>
+              <button type="button" className="gal-nav gal-next" onClick={next} aria-label="Suivant"><svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg></button>
+              <button type="button" className="btn btn-outline-light position-absolute top-0 end-0 m-2" onClick={close} aria-label="Fermer">✕</button>
             </div>
           )}
         </ModalBody>
       </Modal>
+
     </>
   )
 }
