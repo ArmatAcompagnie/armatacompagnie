@@ -3,6 +3,8 @@ import './links-styles.css'
 import { site } from '../site.config' // ← on lit les URLs ici
 import type { SVGProps } from 'react' // pour typer les icônes
 
+
+
 const base = (p: string) => `${import.meta.env.BASE_URL}${p}`.replace('//','/')
 
 type LienProps = {
@@ -95,6 +97,14 @@ function IconYouTubeSquare(props: SVGProps<SVGSVGElement>) {
 }
 
 const TopNav = () => {
+  function closeMenuIfOpen() {
+  const toggler = document.querySelector<HTMLButtonElement>(
+    '.navbar-toggler[aria-controls="navbarSupportedContent"]'
+  )
+  const isOpen = toggler?.getAttribute('aria-expanded') === 'true'
+  if (toggler && isOpen) toggler.click() // ← simule un clic pour refermer proprement
+  }
+
   return (
     <header className="sticky-top">
       <nav className="navbar navbar-expand-lg bg-black" data-bs-theme="dark">
@@ -131,7 +141,12 @@ const TopNav = () => {
 
           <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             {/* Liens du site */}
-            <ul className="navbar-nav mb-2 mb-lg-0">
+            <ul className="navbar-nav mb-2 mb-lg-0"
+            onClick={(e) => {
+              const a = (e.target as HTMLElement).closest('a.nav-link')
+              if (a) closeMenuIfOpen()
+            }}
+            >
               <Lien lien="Accueil" page="/" end />
               <Lien lien="Événements" page="/evenements" />
               <Lien lien="Galerie" page="/galerie" />
