@@ -3,33 +3,25 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: {}
+  workflow_dispatch: {}   # (optionnel) permet de lancer manuellement depuis l'onglet Actions
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4          # 1) Récupère le code
+      - uses: actions/setup-node@v4        # 2) Installe Node
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
-      # ⬇️ Build pour GitHub Pages (base = /armatacompagnie/)
-      - run: npm run build:gh
-      # ⬇️ SPA fix : copie index.html -> 404.html
-      - name: Copy 404 for SPA routes
-        run: cp dist/index.html dist/404.html
-      - uses: actions/upload-pages-artifact@v3
+      - run: npm ci                        # 3) Installe les dépendances (depuis package-lock)
+      - run: npm run build                 # 4) Build Vite -> crée dist/
+      - uses: actions/upload-pages-artifact@v3  # 5) Emballe dist/ en "artifact"
         with:
           path: dist
 
@@ -37,8 +29,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: github-pages                   # crée/alimente l’environnement Pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4      # 6) Publie l’artifact sur GitHub Pages
