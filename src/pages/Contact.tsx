@@ -28,7 +28,7 @@ export default function Contact() {
     const data = new FormData(form)
 
     data.append('access_key', ACCESS_KEY) // IMPORTANT: on l’ajoute une seule fois ici
-    data.append('h-captcha-response', captchaToken)
+    data.set('h-captcha-response', captchaToken)
     //fallback de sujet seulement si vide
     const userSubject = String(data.get('subject') ?? '').trim()
     if (!userSubject) {
@@ -41,8 +41,10 @@ export default function Contact() {
     if (email) data.set('replyto', email)
 
     try {
+      console.log('Token hCaptcha avant envoi:', captchaToken)
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
       const json = await res.json()
+      console.log('Réponse Web3Forms:', json)
       if (json.success) {
         setSucceeded(true)
         form.reset()
