@@ -37,8 +37,15 @@ export default function Mentions() {
 
       <section className="mb-4">
         <h2 className="h4">Hébergement</h2>
-        <p className="mb-1"><strong>GitHub Pages</strong> (GitHub, Inc.)</p>
-        <p className="mb-0">Service d’hébergement de pages statiques. Localisation : États-Unis.</p>
+        <p className="mb-1"><strong>Cloudflare Pages</strong> — Cloudflare, Inc., 101 Townsend St,
+          San Francisco, CA 94107, États-Unis.</p>
+        <p className="mb-1">
+          Service d’hébergement de sites statiques distribué mondialement via un
+          réseau de diffusion de contenu (CDN).
+        </p>
+        <p className="mb-0">
+          Le code source du site est hébergé sur la plateforme GitHub (GitHub, Inc.).
+        </p>
       </section>
 
       <section className="mb-4">
@@ -85,7 +92,7 @@ export default function Mentions() {
       <section className="mb-5">
         <h2 className="h4">Contact</h2>
         <p>Pour toute question relative au site ou à vos données, écrivez-nous à <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
-        <p className="text-muted">Dernière mise à jour : 03/09/2025</p>
+        <p className="text-muted">Dernière mise à jour : 03/12/2025</p>
       </section>
 
       <hr />
