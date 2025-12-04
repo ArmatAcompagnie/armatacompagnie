@@ -18,10 +18,12 @@ export default function Equipe() {
   return (
     <Container style={{ paddingTop: '6rem' }}>
       <Meta
-        title="Équipe"
-        description="Présentation de notre équipe."
-        path="/equipe"
+        title="Notre équipe"
+        description="Découvrez les membres de la Compagnie Armata : cascadeurs, combattants chorégraphiés,
+         animateurs et reconstituteurs spécialisés dans les spectacles historiques, fantastiques et de science-fiction."
+        path="equipe"
       />
+
 
       <h1 className="mb-4 text-center text-uppercase ">Notre équipe</h1>
 

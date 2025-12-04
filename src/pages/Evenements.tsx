@@ -30,9 +30,12 @@ export default function Evenements() {
     <Container style={{ paddingTop: '6rem' }}>
       <Meta
         title="Événements & prestations"
-        description="Nos dates de spectacles, campements historiques et démonstrations."
+        description="Consultez les dates où retrouver la Compagnie Armata et découvrez nos prestations :
+         spectacles historiques ou fantastiques, combats chorégraphiés, cascades, animations de campements et reconstitutions.
+         Interventions pour événements publics ou privés partout en France."
         path="evenements"
       />
+
       <h1 className="mb-3">Événements & prestations</h1>
 
       <FormGroup className="mb-3" style={{ maxWidth: 360 }}>

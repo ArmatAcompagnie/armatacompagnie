@@ -38,9 +38,11 @@ export default function Galerie() {
     <>
     <Meta
       title="Galerie photos & vidéos"
-      description="Photos et vidéos de nos prestations : antique, médiévale, grand siècle, renaissance et fantastique."
+      description="Découvrez en images les spectacles de la Compagnie Armata :
+       combats chorégraphiés, cascades, scènes historiques, fantastiques ou de science-fiction. Photos et vidéos de nos prestations partout en France."
       path="galerie"
     />
+
       <section className="py-4">
         <Container>
           <div className="d-flex flex-wrap gap-2 align-items-center mb-3">

@@ -5,6 +5,7 @@ import { events as allEvents } from '../data/events'
 import DemoPromo from '../components/DemoPromo'
 import '../styles/home.css'
 import Meta from '../components/Meta'
+import { site } from '../site.config'
 
 
 // petit helper pour que les images marchent en local ET sur GitHub Pages
@@ -26,13 +27,59 @@ function fmt(dateISO: string) {
 export default function Home() {
   const next = getUpcoming(3)
 
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'PerformingGroup',
+    name: site.name,
+    description: site.description,
+    url: site.url,
+    email: site.email,
+    logo: new URL(site.logo.replace(/^\//, ''), site.url).toString(),
+    sameAs: [
+      site.facebook,
+      site.instagram,
+      site.youtube,
+    ].filter(Boolean),
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '84 rue de la Vallée de l’Eure, App 2 Bâtiment B',
+      postalCode: '28600',
+      addressLocality: 'Luisant',
+      addressCountry: 'FR',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'France',
+    },
+    legalName: site.name,
+    identifier: [
+      {
+        '@type': 'PropertyValue',
+        propertyID: 'RNA',
+        value: site.rna,
+      },
+      {
+        '@type': 'PropertyValue',
+        propertyID: 'SIREN',
+        value: site.siren,
+      },
+    ],
+  }
+
   return (
     <>
       <Meta
-         title="Accueil"
-         description="Combat & cascade chorégraphiés — spectacles et campements historiques, combats scénarisés et artistique."
-         path="/"
+        title="Spectacles historiques, fantastiques & combats chorégraphiés"
+        description="La Compagnie Armata crée des spectacles historiques, fantastiques et de science-fiction :
+         combats chorégraphiés, cascades, animations et reconstitutions partout en France."
+        path="/"
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+
+
       {/* HERO simple (image de fond + overlay) */}
       <section
         className="py-5 hero"

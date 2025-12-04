@@ -62,11 +62,14 @@ export default function Contact() {
 
   return (
     <Container style={{ paddingTop: '6rem', maxWidth: 720 }}>
-          <Meta
-            title="Contact"
-            description="Utilisez notre formulaire de contact."
+          <Meta 
+            title="Contact & demandes de prestations"
+            description="Contactez la Compagnie Armata pour vos spectacles historiques, fantastiques ou de science-fiction :
+             combats chorégraphiés, cascades, animations, vie de camps, reconstitution et performances scéniques. Réponse rapide via notre formulaire."
             path="contact"
           />
+
+
       <h2 className="mb-3">Contact & Devis</h2>
 
       {succeeded ? (
