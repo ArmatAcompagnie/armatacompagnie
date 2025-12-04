@@ -29,10 +29,12 @@ export default function Home() {
   return (
     <>
       <Meta
-         title="Accueil"
-         description="Combat & cascade chorégraphiés — spectacles et campements historiques, combats scénarisés et artistique."
-         path="/"
+        title="Spectacles historiques, fantastiques & combats chorégraphiés"
+        description="La Compagnie Armata crée des spectacles historiques, fantastiques et de science-fiction :
+         combats chorégraphiés, cascades, animations et reconstitutions partout en France."
+        path="/"
       />
+
       {/* HERO simple (image de fond + overlay) */}
       <section
         className="py-5 hero"
