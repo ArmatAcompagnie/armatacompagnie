@@ -138,8 +138,8 @@ export default function Home() {
           <h2 className="h2 fw-bold mb-3"><strong>Nos univers</strong></h2>
           <Row className="g-3">
             {[
-              { k:'medievale', t:'Médiéval', img:'images/Med001.JPG' },
-              { k:'grand', t:'Renaissance-Grand Siècle', img:'images/img-GS002.JPG' },
+              { k:'medievale', t:'Médiéval', img:'images/gallery/large/Maintenon_1600/DSC_0251_1600.jpg' },
+              { k:'grand', t:'Renaissance-Grand Siècle', img:'images/gallery/large/La_Faye_1600/Faye_DSC_0071_1600.jpg' },
               { k:'starwars', t:'Fantastique', img:'images/IMG-SW01.jpg' }
             ].map(item => (
               <Col key={item.k} md="4">
@@ -167,7 +167,7 @@ export default function Home() {
       <DemoPromo
         videoId="ay_pphQG2fU"               // ← remplace par l’ID de votre vidéo promo
         title="Démo / Bande promo"
-        poster="images/logo/logo-master.png"// ← image locale pour éviter tout appel à YouTube avant clic
+        poster="images/logo/logo-master02.jpg"// ← image locale pour éviter tout appel à YouTube avant clic
         subtitle="Extraits de spectacles : antique, médiéval, grand siècle, renaissance et fantastique."
         maxVh={60}
       />
