@@ -19,16 +19,16 @@ export const TAGS = [
 export const gallery: GalleryItem[] = [
   {
     id: 'medieval-001',
-    src: 'images/gallery/Med001.JPG',
-    //srcLarge: 'images/gallery/medieval-001-1920.jpg',
+    src: 'images/gallery/vignettes/Maintenon-800x600/DSC_0226_800x600.jpg',
+    srcLarge: 'images/gallery/large/Maintenon_1600/DSC_0226_1600.jpg',
     alt: 'Combat médiéval chorégraphié en extérieur',
     tags: ['Médiévale'],
     caption: 'Fête historique — mêlée et duel.',
   },
   {
     id: 'grand-001',
-    src: 'images/gallery/img-GS002.JPG',
-    //srcLarge: 'images/gallery/grand-001-1920.jpg',
+    src: 'images/gallery/vignettes/La_Faye_800x600/Faye_DSC_0071_8x6.jpg',
+    srcLarge: 'images/gallery/large/La_Faye_1600/Faye_DSC_0071_1600.jpg',
     alt: 'Duel cape & épée — Grand Siècle',
     tags: ['Grand Siècle - Renaissance'],
   },
