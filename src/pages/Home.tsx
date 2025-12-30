@@ -81,55 +81,101 @@ export default function Home() {
 
 
       {/* HERO simple (image de fond + overlay) */}
-      <section
-        className="py-5 hero"
-        style={{
-          position: 'relative',
-          //minHeight: '70vh',                 // ajuste si tu veux : 50–65vh marche bien
-          display: 'grid',
-          alignItems: 'center',
-          // 1er calque = gradient (cover), 2e calque = image (contain)
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.6)), url('${base('images/gallery/large/La_Faye_1600/Faye_DSC_0080_1600.jpg')}')`,
-          backgroundSize: 'cover, cover',
-          backgroundPosition: 'center, center',
-          backgroundRepeat: 'no-repeat, no-repeat',
-          backgroundColor: '#000',           // couleur des bandes (letterboxing)
-        }}
-      >
-        <Container style={{ color: '#fff' }}>
+      <section className="py-5 hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* calque image (LCP) */}
+        <img
+          src={base('images/gallery/large/La_Faye_1600/Faye_DSC_0080_1600.jpg')}
+          alt="Compagnie Armata – combats et cascades chorégraphiés"
+          fetchPriority="high"
+          decoding="async"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0,
+          }}
+        />
+
+        {/* calque overlay */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.6))',
+            zIndex: 1,
+          }}
+        />
+
+        {/* contenu */}
+        <Container style={{ color: '#fff', position: 'relative', zIndex: 2 }}>
           <h1 className="display-5 fw-bold mb-2">Combats & cascades chorégraphiés</h1>
           <p className="lead mb-3" style={{ maxWidth: 720 }}>
-            Spectacles & camps historiques, démonstrations de combat chorégraphiés — de l’Antiquité au
-            fantastique.
+            Spectacles & camps historiques, démonstrations de combat chorégraphiés — de l’Antiquité au fantastique.
           </p>
           <Button color="primary" tag={Link} to="/contact">Demandez-nous</Button>
         </Container>
       </section>
 
+
       <section
-        className="py-5 hero"
+        className="py-5 hero hero--about"
         style={{
           position: 'relative',
-          //minHeight: '80vh',
           display: 'grid',
           alignItems: 'start',
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.55)), url('${base('images/img-001.jpg')}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          overflow: 'hidden',
+          backgroundColor: '#000',
         }}
       >
-        <Container style={{ color: '#fff' }}>
+        {/* Image responsive + lazy (car 2e hero) */}
+        
+          <img
+            src={base('images/img-001.jpg')}
+            alt="La Compagnie Armata en démonstration"
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        
+
+        {/* Overlay gradient */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.55))',
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Contenu au-dessus */}
+        <Container style={{ color: '#fff', position: 'relative', zIndex: 1 }}>
           <h2 className="display-5 fw-bold mb-2">La Compagnie Armata...</h2>
           <p className="lead mb-3" style={{ maxWidth: 720 }}>
-            ...se spécialise dans la création de combats chorégraphiés, permettant de plonger les petits et grands dans différentes époques.
-            <br /> <br />
-            Les univers historiques, fantastiques, littéraires, théâtral et tant d’autres sont nos sources d’inspiration de nos créations, que nous mettons en scène tout en magnifiant l’arme blanche.
+            ...se spécialise dans la création de combats chorégraphiés, permettant de plonger
+            les petits et grands dans différentes époques.
             <br /><br />
-            Des Château aux fêtes de villages, des scènes de théâtres aux guinguettes, nos terrains de jeux sont divers et variés……
+            Les univers historiques, fantastiques, littéraires, théâtral et tant d’autres sont
+            nos sources d’inspiration de nos créations, que nous mettons en scène tout en
+            magnifiant l’arme blanche.
+            <br /><br />
+            Des Château aux fêtes de villages, des scènes de théâtres aux guinguettes, nos
+            terrains de jeux sont divers et variés……
           </p>
-          
         </Container>
       </section>
+
       
 
       {/* UNIVERS / PRESTATIONS (exemples) */}
