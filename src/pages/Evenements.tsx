@@ -62,10 +62,22 @@ export default function Evenements() {
         firstDay={1}
         events={events}
         eventClick={(arg) => {
-          // ouvrir les liens externes dans un nouvel onglet
-          if (arg.event.url) {
-            arg.jsEvent.preventDefault()
-            window.open(arg.event.url, '_blank', 'noopener,noreferrer')
+          // Empêcher toute navigation automatique de FullCalendar
+          arg.jsEvent.preventDefault()
+
+          // Ouvrir uniquement les liens externes valides
+          const url = arg.event.url
+
+          if (!url) return
+
+          try {
+            const parsedUrl = new URL(url)
+
+            if (!['http:', 'https:'].includes(parsedUrl.protocol)) return
+
+            window.open(parsedUrl.href, '_blank', 'noopener,noreferrer')
+          } catch {
+            // URL invalide : aucune navigation
           }
         }}
         eventDidMount={(info) => {
